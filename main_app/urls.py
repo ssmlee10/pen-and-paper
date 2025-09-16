@@ -6,4 +6,5 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('pens/', views.pen_index, name='pen-index'),
   path('pens/<int:pen_id>/', views.pen_detail, name='pen-detail'),
+  path('pens/create/', views.PenCreate.as_view(), name='pen-create'),
 ]

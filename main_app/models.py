@@ -44,7 +44,7 @@ class Pen(models.Model):
     choices = INK_FILL_MECHANISM,
     default = INK_FILL_MECHANISM[0][0]
   )
-  acquired_date = models.DateField(blank=True, null=True)
+  acquired_date = models.DateField('Acquired Date', null=True, blank=True)
   notes = models.TextField(blank=True, null=True)
 
   def __str__(self):

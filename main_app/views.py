@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Pen
 
 # Create your views here.
@@ -17,3 +18,7 @@ def pen_index(request):
 def pen_detail(request, pen_id):
    pen = Pen.objects.get(id=pen_id)
    return render(request, 'pens/detail.html', {'pen': pen})
+
+class PenCreate(CreateView):
+    model = Pen
+    fields = '__all__'
