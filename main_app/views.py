@@ -13,3 +13,7 @@ def about(request):
 def pen_index(request):
     pens = Pen.objects.all()
     return render(request, 'pens/index.html', {'pens': pens})
+
+def pen_detail(request, pen_id):
+   pen = Pen.objects.get(id=pen_id)
+   return render(request, 'pens/detail.html', {'pen': pen})

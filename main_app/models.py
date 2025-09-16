@@ -5,10 +5,11 @@ NIB_SIZE = (
   ('F', 'Fine'),
   ('M', 'Medium'),
   ('B', 'Bold'),
+  ('S', 'Stub'),
 )
 
 NIB_MATERIAL = (
-  ('S', 'Steel'),
+  ('SS', 'Stainless Steel'),
   ('G14', 'Gold 14k'),
   ('G18', 'Gold 18k'),
   ('G21', 'Gold 21k'),

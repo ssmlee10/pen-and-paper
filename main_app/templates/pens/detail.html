@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cats/cat-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="cat-container">
+  <div class="cat-img">
+    <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+  </div>
+  <div class="cat-details">
+<h1>{{ pen.model }}</h1>
+
+<p><strong>Nib Size:</strong> {{ pen.get_nib_size_display }}</p>
+<p><strong>Nib Material:</strong> {{ pen.get_nib_material_display }}</p>
+<p><strong>Ink Filling Mechanism:</strong> {{ pen.get_ink_fill_display }}</p>
+<p><strong>Acquired Date:</strong> {{ pen.acquired_date }}</p>
+
+{% if pen.notes %}
+  <p><strong>Notes:</strong> {{ pen.notes }}</p>
+{% else %}
+  <p>No notes available.</p>
+{% endif %}
+
+  </div>
+</section>
+{% endblock %}
