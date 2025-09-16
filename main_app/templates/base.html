@@ -6,12 +6,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut
-    icon" type="image/png" href="" />
+    <link
+      rel="shortcut
+    icon"
+      type="image/png"
+      href=""
+    />
     <title>Pen &amp; Paper Pen Tracker</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
-    {% endblock %}
+    {% block head %} {% endblock %}
   </head>
   <body>
     <header>
@@ -22,14 +25,11 @@
       </div>
       <nav>
         <ul>
-          <li><a href="/pens">All Pens</a></li>
-          <li><a href="/about">About</a></li>
+          <li><a href="{% url 'pen-index' %}">All Pens</a></li>
+          <li><a href="{% url 'about'%}">About</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
+    <main>{% block content %} {% endblock %}</main>
   </body>
 </html>
