@@ -26,7 +26,7 @@ class PenCreate(CreateView):
 
 class PenUpdate(UpdateView):
     model = Pen
-    fields = ['nib_size', 'nib_material', 'ink_fill', 'notes']
+    fields = ['nib_size', 'nib_material', 'ink_fill', 'acquired_date', 'notes']
 
 class PenDelete(DeleteView):
     model = Pen

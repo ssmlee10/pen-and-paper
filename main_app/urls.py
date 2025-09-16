@@ -9,5 +9,4 @@ urlpatterns = [
   path('pens/create/', views.PenCreate.as_view(), name='pen-create'),
   path('pens/<int:pk>/update/', views.PenUpdate.as_view(), name='pen-update'),
   path('pens/<int:pk>/delete/', views.PenDelete.as_view(), name='pen-delete'),
-  path('', views.Home.as_view(), name='home'),
 ]
