@@ -27,4 +27,25 @@
     </div>
   </div>
 </section>
+
+<div class="feedings-toy-container">
+  <section class="toys">
+  <div class="subsection-title">
+  <h2>Inks</h2>
+  <h3>Available Inks</h3>
+  <div class="subsection-content">
+    {% for ink in inks %}
+      <div class="toy-container">
+        <div class="color-block" style="background-color: {{ ink.color }}"></div>
+        <p>{{ ink.brand }} {{ ink.name }}</p>
+        <form action="" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Ink Pen</button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+</div>
+
 {% endblock %}

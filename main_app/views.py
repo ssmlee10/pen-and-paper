@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Pen
+from .models import Pen, Ink
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
@@ -7,8 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
-# views.py
 
 class Home(LoginView):
   template_name = 'home.html'
@@ -21,9 +19,14 @@ def pen_index(request):
   pens = Pen.objects.filter(user=request.user)
   return render(request, 'pens/index.html', {'pens': pens})
 
+@login_required
 def pen_detail(request, pen_id):
   pen = Pen.objects.get(id=pen_id)
-  return render(request, 'pens/detail.html', {'pen': pen})
+  inks = Ink.objects.all()
+  return render(request, 'pens/detail.html', {
+    'pen': pen,
+    'inks': inks
+})
 
 class PenCreate(LoginRequiredMixin, CreateView):
   model = Pen

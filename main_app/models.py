@@ -28,6 +28,20 @@ INK_FILL_MECHANISM = (
    ('V', 'Vacuum-Fill'),
 )
 
+class Ink(models.Model):
+  brand = models.CharField(max_length=100)
+  name = models.CharField(max_length=100)
+  color = models.CharField(max_length=20)
+  shimmer = models.BooleanField(default=False)
+  sheen = models.BooleanField(default=False)
+  acquired_date = models.DateField('Acquired Date')
+  notes = models.TextField(blank=True, null=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.brand} {self.name}"
+
+
 class Pen(models.Model):
   brand = models.CharField(max_length=100)
   model = models.CharField(max_length=100)
@@ -49,6 +63,7 @@ class Pen(models.Model):
   acquired_date = models.DateField('Acquired Date', null=True, blank=True)
   notes = models.TextField(blank=True, null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  inks = models.ManyToManyField(Ink)
 
   def __str__(self):
     return f"{self.brand} {self.model} ({self.nib_size})"
