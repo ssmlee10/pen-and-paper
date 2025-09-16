@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 NIB_SIZE = (
   ('EF', 'Extra Fine'),
@@ -27,7 +28,7 @@ INK_FILL_MECHANISM = (
    ('V', 'Vacuum-Fill'),
 )
 
-class Pen(models.Model): 
+class Pen(models.Model):
   brand = models.CharField(max_length=100)
   model = models.CharField(max_length=100)
   nib_size = models.CharField(
@@ -47,6 +48,7 @@ class Pen(models.Model):
   )
   acquired_date = models.DateField('Acquired Date', null=True, blank=True)
   notes = models.TextField(blank=True, null=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"{self.brand} {self.model} ({self.nib_size})"

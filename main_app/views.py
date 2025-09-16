@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pen
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 # views.py
@@ -30,3 +31,6 @@ class PenUpdate(UpdateView):
 class PenDelete(DeleteView):
     model = Pen
     success_url = '/pens/'
+
+class Home(LoginView):
+    template_name = 'home.html'
