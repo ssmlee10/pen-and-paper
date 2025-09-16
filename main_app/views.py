@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Pen
 
 # Create your views here.
@@ -22,3 +22,11 @@ def pen_detail(request, pen_id):
 class PenCreate(CreateView):
     model = Pen
     fields = '__all__'
+
+class PenUpdate(UpdateView):
+    model = Pen
+    fields = ['nib_size', 'nib_material', 'ink_fill', 'notes']
+
+class PenDelete(DeleteView):
+    model = Pen
+    success_url = '/pens/'

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 NIB_SIZE = (
   ('EF', 'Extra Fine'),
@@ -49,3 +50,6 @@ class Pen(models.Model):
 
   def __str__(self):
     return f"{self.brand} {self.model} ({self.nib_size})"
+  
+  def get_absolute_url(self):
+    return reverse('pen-detail', kwargs={'pen_id': self.id})
