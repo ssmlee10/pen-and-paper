@@ -39,7 +39,10 @@ class Ink(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
-      return f"{self.brand} {self.name}"
+    return f"{self.brand} {self.name}"
+  
+  def get_absolute_url(self):
+    return reverse('ink-detail', kwargs={'ink_id': self.id})
 
 
 class Pen(models.Model):

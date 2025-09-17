@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/inks/ink-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<div class="card" style="border-color: {{ ink.color }}">
+  <div class="card-bg" style="background-color: {{ ink.color }}"></div>
+  <div class="card-content">
+    <h2>{{ ink.name }}</h2>
+    <p>{{ ink.color }}</p>
+  </div>
+</div>
+<a href="" class="btn warn">Edit</a>
+<a href="" class="btn danger">Delete</a>
+
+{% endblock %}
