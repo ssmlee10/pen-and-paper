@@ -23,6 +23,11 @@ main > section {
   max-width: 375px;
 }
 
+.logo {
+  width: 330px;
+  height: auto;
+}
+
 .cat-container {
   width: 80%;
 }

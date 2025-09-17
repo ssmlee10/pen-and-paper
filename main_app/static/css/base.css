@@ -29,16 +29,16 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, 0.7);
-  --nav-bg-ff: rgba(104, 197, 248, 0.9);
-  --borders: rgb(36, 116, 248) solid 2px;
+  --nav-bg: rgba(209, 124, 78, 0.877);
+  --nav-bg-ff: rgba(209, 124, 78, 0.877);
+  --borders: rgba(209, 124, 78, 0.877);
   --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(16, 56, 158);
+  --link-hover-color: rgb(0, 0, 0);
   --button-bg: rgb(245, 245, 245);
   --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
+  --submit: rgb(147, 79, 1);
+  --warn: rgb(162, 68, 5);
+  --danger: rgb(169, 81, 36);
   --secondary: rgb(57, 57, 57);
   --card-box-shadow: 5px 5px 6px -1px #aaa;
   --font-xtreme: 4.2rem;
