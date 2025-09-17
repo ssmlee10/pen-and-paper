@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Pen, Ink
 from .forms import PenForm, InkForm
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
@@ -52,6 +53,12 @@ class InkCreate(LoginRequiredMixin, CreateView):
    def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+   
+class InkList(ListView):
+   model = Ink
+
+class InkDetail(DetailView):
+   model = Ink
 
 def associate_ink(request, pen_id, ink_id):
   Pen.objects.get(id=pen_id).inks.add(ink_id)
