@@ -32,13 +32,31 @@
   <section class="toys">
   <div class="subsection-title">
   <h2>Inks</h2>
+  <h3>Currently Inked</h3>
+<!-- if pen is currently inked, add inked button goes away conditional -->
+<div class="subsection-content">
+  {% if pen.inks.exists %}
+    {% for ink in pen.inks.all %}
+      <div class="toy-container">
+        <div class="color-block" style="background-color: {{ ink.color }}"></div>
+        <p>{{ ink.brand }} {{ ink.name }}</p>
+        {% comment %} <form action="{% url 'disassociate-ink' pen.id ink.id %}" method="post"> {% endcomment %}
+          {% csrf_token %}
+          <button type="submit" class="btn warning">Unink Pen</button>
+        </form>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No inks currently in this pen.</p>
+  {% endif %}
+</div>
   <h3>Available Inks</h3>
   <div class="subsection-content">
     {% for ink in inks %}
       <div class="toy-container">
         <div class="color-block" style="background-color: {{ ink.color }}"></div>
         <p>{{ ink.brand }} {{ ink.name }}</p>
-        <form action="" method="post">
+        <form action="{% url 'associate-ink' pen.id ink.id %}" method="post">
           {% csrf_token %}
           <button type="submit" class="btn submit">Ink Pen</button>
         </form>

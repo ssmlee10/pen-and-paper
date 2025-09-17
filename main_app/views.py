@@ -44,6 +44,10 @@ class PenDelete(LoginRequiredMixin, DeleteView):
     model = Pen
     success_url = '/pens/'
 
+def associate_ink(request, pen_id, ink_id):
+  Pen.objects.get(id=pen_id).inks.add(ink_id)
+  return redirect('pen-detail', pen_id=pen_id)
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
