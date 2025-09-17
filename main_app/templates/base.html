@@ -28,6 +28,7 @@
           {% if user.is_authenticated %}
           <li><a href="{% url 'pen-index' %}">All Pens</a></li>
           <li><a href="{% url 'pen-create' %}">Add a Pen</a></li>
+          <li><a href="{% url 'ink-create' %}">Add an Ink</a></li>
           <li><a href="{% url 'about'%}">About</a></li>
           <li>
             <form id="logout-form" method="post" action="{% url 'logout' %}">

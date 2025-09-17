@@ -9,6 +9,7 @@ urlpatterns = [
   path('pens/create/', views.PenCreate.as_view(), name='pen-create'),
   path('pens/<int:pk>/update/', views.PenUpdate.as_view(), name='pen-update'),
   path('pens/<int:pk>/delete/', views.PenDelete.as_view(), name='pen-delete'),
+  path('inks/create/', views.InkCreate.as_view(), name='ink-create'),
   path('pens/<int:pen_id>/associate-ink/<int:ink_id>/', views.associate_ink, name='associate-ink'),
   path('pens/<int:pen_id>/remove-ink/<int:ink_id>/', views.remove_ink, name='remove-ink'),
   path('accounts/signup/', views.signup, name='signup'),
