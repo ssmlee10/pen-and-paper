@@ -22,10 +22,10 @@ NIB_MATERIAL = (
 )
 
 INK_FILL_MECHANISM = (
-   ('CA', 'Cartridge'),
-   ('CO', 'Cartridge-Converter'),
-   ('P', 'Piston-Fill'),
-   ('V', 'Vacuum-Fill'),
+  ('CA', 'Cartridge'),
+  ('CO', 'Cartridge-Converter'),
+  ('P', 'Piston-Fill'),
+  ('V', 'Vacuum-Fill'),
 )
 
 class Ink(models.Model):
@@ -39,34 +39,36 @@ class Ink(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
-    return f"{self.brand} {self.name}"
+      return f"{self.brand} {self.name}"
 
 
 class Pen(models.Model):
   brand = models.CharField(max_length=100)
   model = models.CharField(max_length=100)
   nib_size = models.CharField(
-    max_length = 2,
-    choices = NIB_SIZE,
-    default = NIB_SIZE[0][0]
+    max_length=2,
+    choices=NIB_SIZE,
+    default=NIB_SIZE[0][0]
   )
   nib_material = models.CharField(
-    max_length = 3,
-    choices = NIB_MATERIAL,
-    default = NIB_MATERIAL[0][0]
+    max_length=3,
+    choices=NIB_MATERIAL,
+    default=NIB_MATERIAL[0][0]
   )
   ink_fill = models.CharField(
-    max_length = 2,
-    choices = INK_FILL_MECHANISM,
-    default = INK_FILL_MECHANISM[0][0]
+    max_length=2,
+    choices=INK_FILL_MECHANISM,
+    default=INK_FILL_MECHANISM[0][0]
   )
   acquired_date = models.DateField('Acquired Date', null=True, blank=True)
   notes = models.TextField(blank=True, null=True)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  inks = models.ManyToManyField(Ink)
+
+  user = models.ForeignKey(User, on_delete=models.CASCADE, editable=False)
+
+  inks = models.ManyToManyField(Ink, blank=True)
 
   def __str__(self):
     return f"{self.brand} {self.model} ({self.nib_size})"
-  
+
   def get_absolute_url(self):
     return reverse('pen-detail', kwargs={'pen_id': self.id})

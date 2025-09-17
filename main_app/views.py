@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Pen, Ink
+from .forms import PenForm, InkForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
@@ -30,7 +31,7 @@ def pen_detail(request, pen_id):
 
 class PenCreate(LoginRequiredMixin, CreateView):
   model = Pen
-  fields = '__all__'
+  form_class = PenForm
 
 def form_valid(self, form):
   form.instance.user = self.request.user
@@ -38,7 +39,7 @@ def form_valid(self, form):
 
 class PenUpdate(LoginRequiredMixin, UpdateView):
   model = Pen
-  fields = ['nib_size', 'nib_material', 'ink_fill', 'acquired_date', 'notes']
+  form_class = PenForm
 
 class PenDelete(LoginRequiredMixin, DeleteView):
     model = Pen
