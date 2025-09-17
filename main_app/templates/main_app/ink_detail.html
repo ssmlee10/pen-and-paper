@@ -12,7 +12,7 @@
     <p>{{ ink.color }}</p>
   </div>
 </div>
-<a href="" class="btn warn">Edit</a>
-<a href="" class="btn danger">Delete</a>
+<a href="{% url 'ink-update' ink.id%}" class="btn warn">Edit</a>
+<a href="{% url 'ink-delete' ink.id%}" class="btn danger">Delete</a>
 
 {% endblock %}

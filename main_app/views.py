@@ -54,6 +54,7 @@ class InkCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
    
+@login_required
 def ink_detail(request, ink_id):
   ink = Ink.objects.get(id=ink_id)
   return render(request, 'main_app/ink_detail.html', {
@@ -65,6 +66,14 @@ class InkList(ListView):
 
 class InkDetail(DetailView):
    model = Ink
+
+class InkUpdate(UpdateView):
+  model = Ink
+  form_class = InkForm
+
+class InkDelete(DeleteView):
+  model = Ink
+  success_url = '/inks/'
 
 def associate_ink(request, pen_id, ink_id):
   Pen.objects.get(id=pen_id).inks.add(ink_id)
