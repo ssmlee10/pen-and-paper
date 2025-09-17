@@ -36,3 +36,8 @@
   margin: 5px 0;
   font-size: var(--font-reg);
 }
+
+.fountainPen {
+  width: 180px;
+  height: auto;
+}

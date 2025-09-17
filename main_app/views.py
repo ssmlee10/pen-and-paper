@@ -54,6 +54,12 @@ class InkCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
    
+def ink_detail(request, ink_id):
+  ink = Ink.objects.get(id=ink_id)
+  return render(request, 'main_app/ink_detail.html', {
+    'ink': ink
+})
+   
 class InkList(ListView):
    model = Ink
 
