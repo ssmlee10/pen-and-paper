@@ -45,9 +45,13 @@ class PenDelete(LoginRequiredMixin, DeleteView):
   model = Pen
   success_url = '/pens/'
 
-class InkCreate(CreateView):
+class InkCreate(LoginRequiredMixin, CreateView):
    model = Ink
    form_class = InkForm
+
+   def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 def associate_ink(request, pen_id, ink_id):
   Pen.objects.get(id=pen_id).inks.add(ink_id)
