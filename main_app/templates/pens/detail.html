@@ -40,14 +40,14 @@
       <div class="toy-container">
         <div class="color-block" style="background-color: {{ ink.color }}"></div>
         <p>{{ ink.brand }} {{ ink.name }}</p>
-        {% comment %} <form action="{% url 'disassociate-ink' pen.id ink.id %}" method="post"> {% endcomment %}
+        <form action="{% url 'remove-ink' pen.id ink.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn warning">Unink Pen</button>
+          <button type="submit" class="btn danger">Remove Ink</button>
         </form>
       </div>
     {% endfor %}
   {% else %}
-    <p>No inks currently in this pen.</p>
+    <p>This pen is currently not inked.</p>
   {% endif %}
 </div>
   <h3>Available Inks</h3>
