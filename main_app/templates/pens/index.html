@@ -1,8 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
-<link
-  rel="stylesheet"
-  href="{% static 'css/pens/pen-index.css' %}"
-/>
+<link rel="stylesheet" href="{% static 'css/pens/pen-index.css' %}" />
 {% endblock %} {% block content %}
 
 <section class="page-header">
@@ -10,20 +7,26 @@
 </section>
 
 <section class="card-container">
-  {% for pen in pens %}
-  <div class="card">
-    <a href="{% url 'pen-detail' pen.id %}">
-    <div class="card-content">
-      <div class="card-img-container">
-        <img
-          src="{% static 'images/fountainPen.png' %}"
-          alt="A fountain pen" class='fountainPen'
-        />
-      </div>
-      <h2 class="card-title">{{ pen.brand }}</h2>
-      <p><small>{{ pen.model }}</small></p>
+  {% regroup pens by brand as brand_list %} {% for brand in brand_list %}
+  <h2 class="brand-header">{{ brand.grouper }}</h2>
+  <div class="brand-section">
+    {% for pen in brand.list %}
+    <div class="card">
+      <a href="{% url 'pen-detail' pen.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img
+              src="{% static 'images/fountainPen.png' %}"
+              alt="A fountain pen"
+              class="fountainPen"
+            />
+          </div>
+          <h3 class="card-title">{{ pen.model }}</h3>
+          <p>Nib: {{ pen.nib_size }}</p>
+        </div>
+      </a>
     </div>
-  </a>
+    {% endfor %}
   </div>
   {% endfor %}
 </section>

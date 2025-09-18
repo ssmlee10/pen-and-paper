@@ -1,12 +1,22 @@
-.card-container {
-  padding: 0 30px;
+body {
+  margin: 0 auto;
+}
+
+.brand-section {
+  padding: 0 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.brand-header {
+  padding-left: 5rem;
 }
 
 .card {
-  width: 275px;
+  width: 170px;
   margin: 10px;
   border: var(--borders);
   box-shadow: var(--card-box-shadow);
@@ -37,7 +47,11 @@
   font-size: var(--font-reg);
 }
 
+.card-title {
+  font-size: 1.5em;
+}
+
 .fountainPen {
-  width: 180px;
+  width: 150px;
   height: auto;
 }
