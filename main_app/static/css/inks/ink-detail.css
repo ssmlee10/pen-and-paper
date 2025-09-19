@@ -45,6 +45,15 @@
   display: flex;
 }
 
+span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  vertical-align: middle;
+
+}
+
 .card {
   width: 224px;
   height: 224px;
