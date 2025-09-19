@@ -11,7 +11,7 @@
       <h1>Add an Ink</h1>
     {% endif %}
   </div>
-  <form action="" method="post" class="form-container" autocomplete="off">
+  <form action="" method="post" enctype="multipart/form-data" class="form-container" autocomplete="off">
     {% csrf_token %}
     <table>
       {{ form.as_table }}

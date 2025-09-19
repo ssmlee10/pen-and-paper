@@ -45,6 +45,8 @@ class Ink(models.Model):
     default=SIZE[0][0]
   )
   acquired_date = models.DateField('Acquired Date')
+  hex_code = models.CharField(max_length=7, default="#000000")
+  swatch_img = models.ImageField(upload_to="swatches/", blank=True, null=True)
   notes = models.TextField(blank=True, null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 

@@ -17,6 +17,7 @@ class InkForm(forms.ModelForm):
     exclude = ['user']
     widgets = {
       'acquired_date': forms.DateInput(
-        attrs={'type': 'date'}
+        attrs={'type': 'date'},
     ),
+      'hex_code': forms.TextInput(attrs={'type': 'color'}),
 }

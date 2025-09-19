@@ -147,3 +147,7 @@ LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'pen-index'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+# media files - ink swatches
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
