@@ -1,1 +1,1 @@
-web: gunicorn penandpaper.wsgi
+web: gunicorn paperandpen.wsgi
