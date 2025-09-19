@@ -94,7 +94,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'paperandpen',
+            'NAME': 'penandpaper',
         }
     }
 
