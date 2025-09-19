@@ -10,14 +10,34 @@
     <h2>{{ ink.brand }}</h2>
     <h2>{{ ink.name }}</h2>
 
-      <img src="{{ ink.swatch_img.url }}" alt="swatch of {{ink.name}}">
+    <div class="inkDescrip">
+      <img src="{{ ink.swatch_img.url }}" alt="swatch of {{ink.name}}" class='swatchImg'>
 
-
-    <p><strong>Shimmer:</strong> {{ ink.shimmer }}</p>
-    <p><strong>Sheen:</strong> {{ ink.sheen }}</p>
-    <p>
-      <strong>Ink Size:</strong> {{ ink.get_size_display }}
-    </p>
+    <div>
+      <p>
+  <strong>Color:</strong>
+  <span 
+    style="display:inline-block; width:20px; height:20px; background-color: {{ ink.hex_code }}; border: 1px solid #000; vertical-align: middle;">
+  </span>
+  {{ ink.hex_code }}
+</p>
+      <p>
+        <strong>Ink Size:</strong> {{ ink.get_size_display }}
+      </p>
+        <p><strong>Shimmer:</strong>
+    {% if ink.shimmer %}
+        Yes
+    {% else %}
+        No
+    {% endif %}
+</p>
+    <p><strong>Sheen:</strong>
+    {% if ink.sheen %}
+        Yes
+    {% else %}
+        No
+    {% endif %}
+</p>
     <p><strong>Acquired Date:</strong> {{ ink.acquired_date }}</p>
 
     {% if ink.notes %}
@@ -25,6 +45,8 @@
     {% else %}
     <p>No notes available.</p>
     {% endif %}
+  </div>
+  </div>
 
 <div class='cat-actions'>
 <a href="{% url 'ink-update' ink.id%}" class="btn warn">Edit</a>

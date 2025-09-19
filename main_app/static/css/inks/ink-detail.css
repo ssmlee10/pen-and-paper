@@ -36,6 +36,15 @@
   margin-top: 50px;
 }
 
+.swatchImg {
+  width: 200px;
+  height: auto;
+}
+
+.inkDescrip {
+  display: flex;
+}
+
 .card {
   width: 224px;
   height: 224px;
