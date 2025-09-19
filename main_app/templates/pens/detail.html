@@ -30,7 +30,6 @@
   <div class="subsection-title">
   <h2>Inks</h2>
   <h3>Currently Inked</h3>
-<!-- if pen is currently inked, add inked button goes away conditional -->
 <div class="subsection-content">
   {% if pen.inks.exists %}
     {% for ink in pen.inks.all %}
@@ -44,7 +43,7 @@
       </div>
     {% endfor %}
   {% else %}
-    <p>This pen is currently not inked.</p>
+    <p>This pen is currently not inked!</p>
   {% endif %}
 </div>
   <h3>Available Inks</h3>

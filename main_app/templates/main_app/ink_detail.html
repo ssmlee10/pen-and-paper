@@ -5,14 +5,28 @@
 {% endblock %} 
 {% block content %}
 
-<div class="card" style="border-color: {{ ink.color }}">
-  <div class="card-bg" style="background-color: {{ ink.color }}"></div>
-  <div class="card-content">
+<section class="cat-container">
+  <div class="cat-details">
+    <h2>{{ ink.brand }}</h2>
     <h2>{{ ink.name }}</h2>
-    <p>{{ ink.color }}</p>
-  </div>
-</div>
+
+    <p><strong>Shimmer:</strong> {{ ink.shimmer }}</p>
+    <p><strong>Sheen:</strong> {{ ink.sheen }}</p>
+    <p>
+      <strong>Ink Size:</strong> {{ ink.get_size_display }}
+    </p>
+    <p><strong>Acquired Date:</strong> {{ ink.acquired_date }}</p>
+
+    {% if ink.notes %}
+    <p><strong>Notes:</strong> {{ ink.notes }}</p>
+    {% else %}
+    <p>No notes available.</p>
+    {% endif %}
+
+<div class='cat-actions'>
 <a href="{% url 'ink-update' ink.id%}" class="btn warn">Edit</a>
 <a href="{% url 'ink-delete' ink.id%}" class="btn danger">Delete</a>
+</div>
+</section>
 
 {% endblock %}

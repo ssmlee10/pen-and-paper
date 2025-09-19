@@ -1,8 +1,39 @@
-main {
+.cat-container {
+  padding: 35px 30px;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  min-height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-details {
+  width: 98%;
+}
+
+.cat-details h1 {
+  font-size: var(--font-xxl);
+  margin: 15px 0 3px;
+}
+
+.cat-details h2 {
+  font-size: var(--font-xl);
+  margin: 0 0 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.cat-details h3 {
+  margin: 20px 0 10px;
+  font-size: var(--font-l);
+}
+
+.cat-details p {
+  font-size: var(--font-reg);
+  margin: 5px 0;
+}
+
+.cat-actions {
+  margin-top: 20px;
 }
 
 .card {
