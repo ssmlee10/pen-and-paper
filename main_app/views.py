@@ -19,7 +19,7 @@ def about(request):
 
 @login_required
 def pen_index(request):
-  pens = Pen.objects.filter(user=request.user)
+  pens = Pen.objects.filter(user=request.user).order_by('brand')
   return render(request, 'pens/index.html', {'pens': pens})
 
 @login_required
@@ -54,19 +54,10 @@ class InkCreate(LoginRequiredMixin, CreateView):
    def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
-   
-from django.db.models import Case, When, Value, IntegerField
 
 def ink_list(request):
-  inks = Ink.objects.all().order_by(
-    Case(
-      When(format='sample', then=Value(0)),
-      When(format='bottle', then=Value(1)),
-      output_field=IntegerField(),
-    ),
-    'color'
-  )
-  return render(request, 'main_app/ink_list.html', {'ink_list': inks})
+  inks = Ink.objects.all().order_by("brand", "name")
+  return render(request, "your_template.html", {"ink_list": inks})
   
 @login_required
 def ink_detail(request, ink_id):
