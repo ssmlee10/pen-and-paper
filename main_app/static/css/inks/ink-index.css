@@ -45,20 +45,103 @@
   color: var(--text-color);
 }
 
-.card h2 {
-  margin: 7px 0;
-  font-size: var(--font-xl);
-}
-
-.card p {
-  margin: 0;
-  font-size: var(--font-reg);
-}
-
 .page-header > img {
   margin-left: 10px;
 }
 
 .page-header > img:first-of-type {
   margin-left: 15px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  color: #333;
+  background-color: #fafafa;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #222;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 4px;
+  color: #444;
+}
+
+.ink-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.ink-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.card-container h2 {
+  font-size: var(--font-xl);
+  margin: 0 0 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.ink-table th {
+  font-size: var(--font-l);
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+.ink-table td {
+  font-size: 1.5em;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.ink-table td a {
+  text-decoration: none;
+  color: black;
+}
+
+.ink-table td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee;
+}
+
+.color-box {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.ink-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #222;
+}
+
+.notes {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9rem;
 }

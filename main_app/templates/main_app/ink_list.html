@@ -1,25 +1,32 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block head %}
+{% extends 'base.html' %} {% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/inks/ink-index.css' %}" />
-{% endblock %} 
-{% block content %}
+{% endblock %} {% block content %}
 
 <section class="page-header">
   <h1>My Ink Collection</h1>
 </section>
 
 <section class="card-container">
-  {% for ink in ink_list %}
-    <div class="card" style="border-color: {{ ink.color }}">
-      <div class="card-bg" style="background-color: {{ ink.color }}"></div>
-      <a href="{% url 'ink-detail' ink.id %}">
-        <div class="card-content">
-          <h2>{{ ink.brand }}</h2>
-          <p>{{ ink.name }}</p>
-        </div>
-      </a>
-    </div>
+  {% regroup ink_list by brand as brand_list %} {% for brand in brand_list %}
+  <h2>{{ brand.grouper }}</h2>
+  <table class="ink-table">
+    {% for ink in brand.list %}
+    <tr>
+      <td>
+        <span
+          class="color-box"
+          style="background-color: {{ ink.hex_code }};"
+        ></span>
+      </td>
+      <td class="ink-name">
+        <a href="{% url 'ink-detail' ink.id %}">{{ ink.name }}</a>
+      </td>
+      <td class="ink-size">{{ ink.get_size_display }}</td>
+      <td class="notes">{{ ink.notes }}</td>
+    </tr>
+
+    {% endfor %}
+  </table>
   {% endfor %}
 </section>
 
