@@ -25,10 +25,10 @@ def pen_index(request):
 @login_required
 def pen_detail(request, pen_id):
   pen = Pen.objects.get(id=pen_id)
-  inks = Ink.objects.all()
+  available_inks = Ink.objects.exclude(id__in=pen.inks.all())
   return render(request, 'pens/detail.html', {
     'pen': pen,
-    'inks': inks
+    'inks': available_inks,
 })
 
 class PenCreate(LoginRequiredMixin, CreateView):
