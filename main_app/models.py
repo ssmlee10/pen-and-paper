@@ -53,6 +53,11 @@ class Ink(models.Model):
   def __str__(self):
     return f"{self.brand} {self.name}"
   
+  def save(self, *args, **kwargs):
+    if self.brand:
+      self.brand = self.brand.strip().title()
+      super().save(*args, **kwargs)
+  
   def get_absolute_url(self):
     return reverse('ink-detail', kwargs={'ink_id': self.id})
 
