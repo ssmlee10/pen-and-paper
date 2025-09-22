@@ -1,3 +1,8 @@
+body {
+  margin: 0 auto;
+  background-color: #fafafa;
+}
+
 .card-container {
   padding: 0 40px;
   display: flex;
@@ -51,24 +56,6 @@
 
 .page-header > img:first-of-type {
   margin-left: 15px;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  color: #333;
-  background-color: #fafafa;
-}
-
-.page-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.page-header h1 {
-  font-size: 2rem;
-  margin: 0;
-  color: #222;
 }
 
 h2 {
