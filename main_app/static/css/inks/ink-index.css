@@ -68,8 +68,9 @@ h2 {
 }
 
 .ink-table {
+  display: grid;
+  grid-template-columns: 1fr;
   width: 100%;
-  border-collapse: collapse;
   margin-bottom: 25px;
   background-color: #fff;
   border-radius: 8px;
@@ -77,8 +78,37 @@ h2 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.ink-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.ink-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 100px 8fr;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.ink-row:last-child {
+  border-bottom: none;
+}
+
+.color-box {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.ink-name a {
+  font-weight: 600;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #333;
+}
+
+.ink-size {
+  text-align: center;
+  font-size: 1.5em;
+  color: #555;
 }
 
 .card-container h2 {
@@ -101,15 +131,9 @@ h2 {
   border-bottom: 1px solid #eee;
 }
 
-.ink-table td a {
+.ink-cell a {
   text-decoration: none;
   color: black;
-}
-
-.ink-table td {
-  padding: 12px 15px;
-  vertical-align: middle;
-  border-bottom: 1px solid #eee;
 }
 
 .color-box {
@@ -130,5 +154,5 @@ h2 {
 .notes {
   font-style: italic;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1.5em;
 }
