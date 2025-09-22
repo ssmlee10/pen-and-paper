@@ -96,8 +96,17 @@ nav li {
   padding: 5px 8px;
 }
 
+.navLogo {
+  width: 100px;
+  display: block;
+  padding: 3px;
+}
+
 .header-logo-container {
+  display: flex;
+  align-items: center;
   margin: auto;
+  justify-content: center;
   padding: 10px 20px 0;
   max-width: 500px;
 }
@@ -178,6 +187,12 @@ nav li {
     min-height: calc(100vh - 53px);
   }
 
+  .navLogo {
+    width: 120px;
+    display: block;
+    padding: 5px;
+  }
+  
   nav,
   .header-logo-container {
     margin: 10px 0;
@@ -252,10 +267,10 @@ nav li {
   }
 
   .header-logo-container {
-    /* visual fix to help align logo */
-    padding-top: 6px;
-    width: 256px;
+    width: 264px;
     height: 35px;
+    padding-bottom: 4px;
+
   }
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
