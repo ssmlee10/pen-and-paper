@@ -50,7 +50,7 @@
   <div class="subsection-content">
     {% for ink in inks %}
       <div class="toy-container">
-        <div class="color-block" style="background-color: {{ ink.color }}"></div>
+        <div class="color-block" style="background-color: {{ ink.hex_code }}"></div>
         <p>{{ ink.brand }} {{ ink.name }}</p>
         <form action="{% url 'associate-ink' pen.id ink.id %}" method="post">
           {% csrf_token %}
