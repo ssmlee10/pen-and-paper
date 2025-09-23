@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 NIB_SIZE = (
   ('EF', 'Extra Fine'),
@@ -44,7 +45,7 @@ class Ink(models.Model):
     choices=SIZE,
     default=SIZE[0][0]
   )
-  acquired_date = models.DateField('Acquired Date')
+  acquired_date = models.DateField('Acquired Date', default=timezone.now)
   hex_code = models.CharField(max_length=7, default="#000000")
   swatch_img = models.ImageField(upload_to="swatches/", blank=True, null=True)
   notes = models.TextField(blank=True, null=True)
@@ -60,6 +61,9 @@ class Ink(models.Model):
   
   def get_absolute_url(self):
     return reverse('ink-detail', kwargs={'ink_id': self.id})
+  
+  def days_owned(self):
+    return (timezone.now().date() - self.acquired_date).days
 
 
 class Pen(models.Model):

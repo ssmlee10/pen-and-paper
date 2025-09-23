@@ -43,7 +43,8 @@
 
 .inkDescrip {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 2fr 3fr;
+  max-width: 618px;
 }
 
 span {
