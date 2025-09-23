@@ -6,6 +6,7 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('pens/', views.pen_index, name='pen-index'),
   path('pens/<int:pen_id>/', views.pen_detail, name='pen-detail'),
+  path('log/<int:log_id>/clean/', views.mark_cleaned, name='mark_cleaned'),
   path('pens/create/', views.PenCreate.as_view(), name='pen-create'),
   path('pens/<int:pk>/update/', views.PenUpdate.as_view(), name='pen-update'),
   path('pens/<int:pk>/delete/', views.PenDelete.as_view(), name='pen-delete'),

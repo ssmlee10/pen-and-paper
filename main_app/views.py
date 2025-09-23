@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Pen, Ink
+from django.utils import timezone
+from .models import Pen, Ink, PenInkLog
 from .forms import PenForm, InkForm, PenInkLogForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -32,7 +33,7 @@ def pen_detail(request, pen_id):
             log = log_form.save(commit=False)
             log.pen = pen
             log.save()
-            return redirect("pen_detail", pen_id=pen.id)
+            return redirect("pen-detail", pen_id=pen.id)
     else:
         log_form = PenInkLogForm(initial={"pen": pen})
 
@@ -41,6 +42,14 @@ def pen_detail(request, pen_id):
         "inks": available_inks,
         "log_form": log_form,
     })
+
+@login_required
+def mark_cleaned(request, log_id):
+  log = get_object_or_404(PenInkLog, id=log_id)
+  if log.date_cleaned is None:
+    log.date_cleaned = timezone.now().date()
+    log.save()
+  return redirect("pen-detail", pen_id=log.pen.id)
 
 class PenCreate(LoginRequiredMixin, CreateView):
   model = Pen

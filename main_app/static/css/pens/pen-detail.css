@@ -96,6 +96,12 @@
   margin: 5px 0;
 }
 
+.inkLog {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 0;
+}
+
 .feedings-toy-container > section {
   width: 80%;
   min-width: 360px;

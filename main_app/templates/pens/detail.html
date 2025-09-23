@@ -25,41 +25,6 @@
   </div>
 </section>
 
-{% comment %} <div class="feedings-toy-container">
-  <section class="toys">
-  <div class="subsection-title">
-  <h2>Inks</h2>
-  <h3>Currently Inked</h3>
-<div class="subsection-content">
-  {% if pen.inks.exists %}
-    {% for ink in pen.inks.all %}
-      <div class="toy-container">
-        <div class="color-block" style="background-color: {{ ink.hex_code }}"></div>
-        <p>{{ ink.brand }} {{ ink.name }}</p>
-        <form action="{% url 'remove-ink' pen.id ink.id %}" method="post">
-          {% csrf_token %}
-          <button type="submit" class="btn danger">Remove Ink</button>
-        </form>
-      </div>
-    {% endfor %}
-  {% else %}
-    <p>This pen is currently not inked!</p>
-  {% endif %}
-</div>
-  <h3>Available Inks</h3>
-  <div class="subsection-content">
-    {% for ink in inks %}
-      <div class="toy-container">
-        <div class="color-block" style="background-color: {{ ink.hex_code }}"></div>
-        <p>{{ ink.brand }} {{ ink.name }}</p>
-        <form action="{% url 'associate-ink' pen.id ink.id %}" method="post">
-          {% csrf_token %}
-          <button type="submit" class="btn submit">Ink Pen</button>
-        </form>
-      </div>
-    {% endfor %}
-  </div> {% endcomment %}
-
   <div class="feedings-toy-container">
   <section class="toys">
   <div class="subsection-title">
@@ -67,13 +32,17 @@
 <div class="subsection-content">
 <ul>
   {% for log in pen.ink_logs.all %}
-    <li>
-      {{ log.ink.brand }} {{ log.ink.name }} 
+    <li class='inkLog'>
+      <strong>{{ log.ink.brand }} {{ log.ink.name }}:</strong><br>
       (inked on {{ log.date_inked }}
       {% if log.date_cleaned %}
         – cleaned {{ log.date_cleaned }}, {{ log.days_inked }} days total
       {% else %}
         – still inked, {{ log.days_inked }} days so far
+        <form method="post" action="{% url 'mark_cleaned' log.id %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Mark Cleaned</button>
+        </form>
       {% endif %})
     </li>
   {% empty %}
