@@ -25,7 +25,7 @@
   </div>
 </section>
 
-<div class="feedings-toy-container">
+{% comment %} <div class="feedings-toy-container">
   <section class="toys">
   <div class="subsection-title">
   <h2>Inks</h2>
@@ -58,8 +58,37 @@
         </form>
       </div>
     {% endfor %}
-  </div>
+  </div> {% endcomment %}
+
+  <div class="feedings-toy-container">
+  <section class="toys">
+  <div class="subsection-title">
+<h2>Currently Inked / Ink History</h2>
+<div class="subsection-content">
+<ul>
+  {% for log in pen.ink_logs.all %}
+    <li>
+      {{ log.ink.brand }} {{ log.ink.name }} 
+      (inked on {{ log.date_inked }}
+      {% if log.date_cleaned %}
+        – cleaned {{ log.date_cleaned }}, {{ log.days_inked }} days total
+      {% else %}
+        – still inked, {{ log.days_inked }} days so far
+      {% endif %})
+    </li>
+  {% empty %}
+    <li>No inks logged yet.</li>
+  {% endfor %}
+</ul>
+
+<h2>Log a New Ink</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ log_form.as_p }}
+  <button type="submit" class="btn submit">Save</button>
+</form>
+</div>
+</div>
 </section>
 </div>
-
 {% endblock %}

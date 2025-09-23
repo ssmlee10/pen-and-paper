@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pen, Ink
-from .forms import PenForm, InkForm
+from .forms import PenForm, InkForm, PenInkLogForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.db.models import Case, When, Value, IntegerField
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -24,12 +23,24 @@ def pen_index(request):
 
 @login_required
 def pen_detail(request, pen_id):
-  pen = Pen.objects.get(id=pen_id)
-  available_inks = Ink.objects.exclude(id__in=pen.inks.all())
-  return render(request, 'pens/detail.html', {
-    'pen': pen,
-    'inks': available_inks,
-})
+    pen = get_object_or_404(Pen, id=pen_id)
+    available_inks = Ink.objects.exclude(id__in=pen.ink_logs.values_list('ink_id', flat=True))
+
+    if request.method == "POST":
+        log_form = PenInkLogForm(request.POST)
+        if log_form.is_valid():
+            log = log_form.save(commit=False)
+            log.pen = pen
+            log.save()
+            return redirect("pen_detail", pen_id=pen.id)
+    else:
+        log_form = PenInkLogForm(initial={"pen": pen})
+
+    return render(request, "pens/detail.html", {
+        "pen": pen,
+        "inks": available_inks,
+        "log_form": log_form,
+    })
 
 class PenCreate(LoginRequiredMixin, CreateView):
   model = Pen

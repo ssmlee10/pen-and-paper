@@ -64,7 +64,24 @@ class Ink(models.Model):
   
   def days_owned(self):
     return (timezone.now().date() - self.acquired_date).days
+  
+class PenInkLog(models.Model):
+  pen = models.ForeignKey("Pen", on_delete=models.CASCADE, related_name="ink_logs")
+  ink = models.ForeignKey("Ink", on_delete=models.CASCADE, related_name="pen_logs")
+  date_inked = models.DateField('Date Inked', default=timezone.now)
+  date_cleaned = models.DateField('Date Cleaned', null=True, blank=True)
 
+def __str__(self):
+  log = PenInkLog.objects.get(id=1)
+  print(f"{log.pen.name} with {log.ink.name} was inked for {log.days_inked} days.")
+
+class Meta:
+  ordering = ['-date_inked']
+
+@property
+def days_inked(self):
+  end_date = self.date_cleaned or timezone.now().date()
+  return (end_date - self.date_inked).days
 
 class Pen(models.Model):
   brand = models.CharField(max_length=100)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pen, Ink
+from .models import Pen, Ink, PenInkLog
 
 class PenForm(forms.ModelForm):
   class Meta:
@@ -21,3 +21,11 @@ class InkForm(forms.ModelForm):
     ),
       'hex_code': forms.TextInput(attrs={'type': 'color'}),
 }
+    
+class PenInkLogForm(forms.ModelForm):
+  class Meta:
+    model = PenInkLog
+    fields = ['pen', 'ink', 'date_inked']
+    widgets = {
+        'date_inked': forms.DateInput(attrs={'type': 'date'})
+    }
