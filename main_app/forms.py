@@ -25,7 +25,7 @@ class InkForm(forms.ModelForm):
 class PenInkLogForm(forms.ModelForm):
   class Meta:
     model = PenInkLog
-    fields = ['pen', 'ink', 'date_inked']
+    fields = ['ink', 'date_inked']
     widgets = {
         'date_inked': forms.DateInput(attrs={'type': 'date'})
     }

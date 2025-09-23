@@ -19,7 +19,7 @@ def about(request):
 
 @login_required
 def pen_index(request):
-  pens = Pen.objects.filter(user=request.user).order_by('brand')
+  pens = (Pen.objects.filter(user=request.user).order_by('brand').prefetch_related('ink_logs__ink'))
   return render(request, 'pens/index.html', {'pens': pens})
 
 @login_required

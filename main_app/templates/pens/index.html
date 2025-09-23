@@ -7,10 +7,8 @@
 </section>
 
 <section class="card-container">
-  {% regroup pens by brand as brand_list %} {% for brand in brand_list %}
-  <h2 class="brand-header">{{ brand.grouper }}</h2>
   <div class="brand-section">
-    {% for pen in brand.list %}
+    {% for pen in pens %}
     <div class="card">
       <a href="{% url 'pen-detail' pen.id %}">
         <div class="card-content">
@@ -21,6 +19,7 @@
               class="fountainPen"
             />
           </div>
+          <h3 class="card-title">{{ pen.brand }}</h3>
           <h3 class="card-title">{{ pen.model }}</h3>
           <p>Nib: {{ pen.nib_size }}</p>
         </div>
@@ -28,7 +27,33 @@
     </div>
     {% endfor %}
   </div>
-  {% endfor %}
 </section>
+
+<section class="page-header">
+  <h1>Currently Inked</h1>
+</section>
+<div class="penList subsection-content">
+  <section>
+<ul>
+{% for pen in pens %}
+  <li>
+    <strong>{{ pen.brand }} {{ pen.name }}</strong>
+    <ul>
+      {% for log in pen.ink_logs.all %}
+        {% if not log.date_cleaned %}
+          <li>
+            Inked with <strong>{{ log.ink.brand }} {{ log.ink.name }}</strong>
+            on {{ log.date_inked }} ({{ log.days_inked }} days)
+          </li>
+        {% endif %}
+      {% empty %}
+        <li>No active ink</li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>
+</section>
+</div>
 
 {% endblock %}

@@ -38,19 +38,19 @@
       {% if log.date_cleaned %}
         – cleaned {{ log.date_cleaned }}, {{ log.days_inked }} days total
       {% else %}
-        – still inked, {{ log.days_inked }} days so far
+        – still inked, {{ log.days_inked }} days so far)<br>
         <form method="post" action="{% url 'mark_cleaned' log.id %}" style="display:inline;">
           {% csrf_token %}
           <button type="submit" class="btn submit">Mark Cleaned</button>
         </form>
-      {% endif %})
+      {% endif %}
     </li>
   {% empty %}
     <li>No inks logged yet.</li>
   {% endfor %}
 </ul>
 
-<h2>Log a New Ink</h2>
+<h2>Ink This Pen</h2>
 <form method="post">
   {% csrf_token %}
   {{ log_form.as_p }}
