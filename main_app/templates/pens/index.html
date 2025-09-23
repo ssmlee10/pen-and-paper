@@ -8,6 +8,7 @@
 
 <section class="card-container">
   <div class="brand-section">
+  {% if pens %}
     {% for pen in pens %}
     <div class="card">
       <a href="{% url 'pen-detail' pen.id %}">
@@ -26,6 +27,9 @@
       </a>
     </div>
     {% endfor %}
+  {% else %}
+  <p>Please add a pen!</p>
+  {% endif %}
   </div>
 </section>
 
@@ -35,6 +39,7 @@
 <div class="penList subsection-content">
   <section>
 <ul>
+  {% if pens %}
 {% for pen in pens %}
   <li>
     <strong>{{ pen.brand }} {{ pen.model }}</strong>
@@ -53,6 +58,9 @@
     </ul>
   </li>
 {% endfor %}
+{% else %}
+<p>Please add your pens and inks to track!</p>
+{% endif %}
 </ul>
 </section>
 </div>

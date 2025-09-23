@@ -9,6 +9,9 @@ body {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  p {
+    font-size: 18px;
+  }
 }
 
 .brand-header {

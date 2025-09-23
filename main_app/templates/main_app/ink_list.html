@@ -8,30 +8,28 @@
 
 <section class="card-container">
 {% regroup ink_list by brand as brand_list %}
-  {% for brand in brand_list %}
-    <h2>{{ brand.grouper }}</h2>
-   <div class="ink-table">
-  {% for ink in brand.list %}
-    <div class="ink-row">
-      <div class="ink-cell">
-        <span
-          class="color-box"
-          style="background-color: {{ ink.hex_code }};"
-        ></span>
+{% for brand in brand_list %}
+  <h2>{{ brand.grouper }}</h2>
+  <div class="ink-table">
+    {% for ink in brand.list %}
+      <div class="ink-row">
+        <div class="ink-cell">
+          <span class="color-box" style="background-color: {{ ink.hex_code }};"></span>
+        </div>
+        <div class="ink-cell ink-name">
+          <a href="{% url 'ink-detail' ink.id %}">{{ ink.name }}</a>
+        </div>
+        <div class="ink-cell ink-size">
+          {{ ink.get_size_display }}
+        </div>
+        <div class="ink-cell notes">
+          {{ ink.notes }}
+        </div>
       </div>
-      <div class="ink-cell ink-name">
-        <a href="{% url 'ink-detail' ink.id %}">{{ ink.name }}</a>
-      </div>
-      <div class="ink-cell ink-size">
-        {{ ink.get_size_display }}
-      </div>
-      <div class="ink-cell notes">
-        {{ ink.notes }}
-      </div>
-    </div>
-  {% endfor %}
-</div>
-  {% endfor %}
+    {% endfor %}
+  </div>
+{% endfor %}
+
 </section>
 
 {% endblock %}

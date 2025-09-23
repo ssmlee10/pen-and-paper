@@ -77,7 +77,7 @@ class InkCreate(LoginRequiredMixin, CreateView):
 
 def ink_list(request):
   inks = Ink.objects.all().order_by("brand", "name")
-  return render(request, "your_template.html", {"ink_list": inks})
+  return render(request, "ink_list.html", {"ink_list": inks})
   
 @login_required
 def ink_detail(request, ink_id):
