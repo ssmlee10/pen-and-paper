@@ -33,6 +33,7 @@
 <ul>
   {% for log in pen.ink_logs.all %}
     <li class='inkLog'>
+      <span style="background-color: {{ log.ink.hex_code }};"></span> 
       <strong>{{ log.ink.brand }} {{ log.ink.name }}:</strong><br>
       (inked on {{ log.date_inked }}
       {% if log.date_cleaned %}

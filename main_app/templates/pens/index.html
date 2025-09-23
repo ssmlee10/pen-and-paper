@@ -14,7 +14,7 @@
         <div class="card-content">
           <div class="card-img-container">
             <img
-              src="{% static 'images/fountainPen.png' %}"
+              src="{% static 'images/fountainPenCard.png' %}"
               alt="A fountain pen"
               class="fountainPen"
             />
@@ -37,17 +37,18 @@
 <ul>
 {% for pen in pens %}
   <li>
-    <strong>{{ pen.brand }} {{ pen.name }}</strong>
+    <strong>{{ pen.brand }} {{ pen.model }}</strong>
     <ul>
       {% for log in pen.ink_logs.all %}
         {% if not log.date_cleaned %}
           <li>
-            Inked with <strong>{{ log.ink.brand }} {{ log.ink.name }}</strong>
+              <span style="background-color: {{ log.ink.hex_code }};"></span> 
+              Inked with <strong>{{ log.ink.brand }} {{ log.ink.name }}</strong>
             on {{ log.date_inked }} ({{ log.days_inked }} days)
           </li>
         {% endif %}
       {% empty %}
-        <li>No active ink</li>
+        <li>Not currently inked</li>
       {% endfor %}
     </ul>
   </li>

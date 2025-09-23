@@ -24,6 +24,14 @@
   margin-top: 20px;
 }
 
+span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 3px;
+}
+
 .feedings-toy-container {
   display: flex;
   flex-direction: column;
@@ -107,6 +115,7 @@
 }
 
 .subsection-content p,
+.subsection-content li,
 .subsection-content input,
 .subsection-content select {
   font-size: var(--font-l);

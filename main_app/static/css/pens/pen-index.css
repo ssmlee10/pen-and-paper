@@ -16,7 +16,7 @@ body {
 }
 
 .card {
-  width: 170px;
+  width: 190px;
   margin: 10px;
   border: var(--borders);
   box-shadow: var(--card-box-shadow);
@@ -52,7 +52,7 @@ body {
 }
 
 .fountainPen {
-  width: 150px;
+  width: 170px;
   height: auto;
 }
 
@@ -84,5 +84,13 @@ body {
 
 .subsection-content li {
   margin-left: 5px;
-  padding: 3px;
+  padding: 7px;
+}
+
+span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 3px;
 }
